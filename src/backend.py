@@ -20,7 +20,6 @@ class LoadAndUseModel:
         self.model = AutoModelForCausalLM.from_pretrained(model_path, device_map='auto', torch_dtype=torch.bfloat16)
         self.tokenizer = AutoTokenizer.from_pretrained(model_path)
         logging.info("Model loaded successfully")
-        return self.model, self.tokenizer
     
     def generate_response(self, prompt, max_new_tokens, temperature, top_p, repetition_penalty, top_k, question):
         ap = prompt.format(question, "")
